@@ -67,6 +67,7 @@ function App() {
           position: "relative",
           flex: 1,
           flexShrink: 0,
+          backgroundColor: bgColor,
         }}>
         <canvas
           ref={canvasRef}
@@ -74,7 +75,6 @@ function App() {
             top: 0,
             left: 0,
             position: "fixed",
-            backgroundColor: bgColor,
           }}
         />
       </div>
