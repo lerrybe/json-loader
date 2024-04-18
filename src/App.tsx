@@ -9,14 +9,14 @@ function App() {
   const [error, setError] = useState<boolean>(false);
   const [fontSize, setFontSize] = useState<number>(14);
   const [bgColor, setBgColor] = useState<string>("#ffffff");
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const [jsonString, setJsonString] = useState<string>(jsonString1);
   const { canvas, canvasRef, canvasContainerRef } = useRenderCanvas();
 
   useEffect(() => {
     if (!canvas) return;
-    canvas.loadFromJSON(jsonString, function () {
+    canvas.loadFromJSON(jsonString, () => {
       canvas.renderAll();
-      canvas.requestRenderAll();
     });
   }, [canvas]);
 
@@ -24,19 +24,23 @@ function App() {
     if (!canvas) return;
     if (!jsonString) {
       setError(true);
+      setErrorMessage("JSON string is empty!");
+
       setTimeout(() => setError(false), 2000);
       return;
     }
     try {
       JSON.parse(jsonString);
+      setError(false);
+      setErrorMessage("");
+      canvas.loadFromJSON(jsonString, () => {
+        canvas.renderAll();
+      });
     } catch (error) {
-      alert(error);
+      setError(true);
+      setErrorMessage(String(error));
       return;
     }
-    canvas.loadFromJSON(jsonString, function () {
-      canvas.renderAll();
-      canvas.requestRenderAll();
-    });
   };
 
   const handleChangeFontSize: InputNumberProps["onChange"] = (value) => {
@@ -122,10 +126,10 @@ function App() {
             style={{
               flex: 1,
               fontSize: 16,
-              background: error ? "#f44336" : "#1f77ff",
+              background: "#1f77ff",
             }}
             onClick={handleLoad}>
-            {error ? "Wrong JSON!" : "Load from JSON"}
+            {"Load from JSON"}
           </Button>
         </div>
 
@@ -148,6 +152,22 @@ function App() {
             value={bgColor}
             onChange={handleChangeBgColor}
           />
+        </div>
+
+        <div
+          style={{
+            width: "100%",
+            height: "60px",
+            maxHeight: "60px",
+            color: error ? "#f44336" : "#1f77ff",
+            fontSize: 13,
+            fontWeight: "bold",
+            padding: 14,
+            marginTop: 10,
+            borderRadius: 4,
+            backgroundColor: error ? "#ffebee" : "#e9e9e9",
+          }}>
+          {error && `[ERROR] ${errorMessage}`}
         </div>
 
         <textarea
