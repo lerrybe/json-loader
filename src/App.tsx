@@ -14,9 +14,9 @@ function App() {
 
   useEffect(() => {
     if (!canvas) return;
-    canvas?.loadFromJSON(jsonString, function () {
-      canvas?.renderAll();
-      canvas?.requestRenderAll();
+    canvas.loadFromJSON(jsonString, function () {
+      canvas.renderAll();
+      canvas.requestRenderAll();
     });
   }, [canvas]);
 
@@ -33,9 +33,9 @@ function App() {
       alert(error);
       return;
     }
-    canvas?.loadFromJSON(jsonString, function () {
-      canvas?.renderAll();
-      canvas?.requestRenderAll();
+    canvas.loadFromJSON(jsonString, function () {
+      canvas.renderAll();
+      canvas.requestRenderAll();
     });
   };
 
