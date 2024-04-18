@@ -16,6 +16,7 @@ function App() {
     if (!canvas) return;
     canvas?.loadFromJSON(jsonString, function () {
       canvas?.renderAll();
+      canvas?.requestRenderAll();
     });
   }, [canvas]);
 
@@ -34,6 +35,7 @@ function App() {
     }
     canvas?.loadFromJSON(jsonString, function () {
       canvas?.renderAll();
+      canvas?.requestRenderAll();
     });
   };
 
