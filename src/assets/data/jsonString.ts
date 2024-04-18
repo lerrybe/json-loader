@@ -34,6 +34,14 @@ export const jsonString1 = `{
     },
     {
       "type": "text",
+      "left": 800,
+      "top": 600,
+      "fontSize": 60,
+      "text": "Javascript",
+      "fill": "#4caf50"
+    },
+    {
+      "type": "text",
       "left": 600,
       "top": 400,
       "fontSize": 60,
