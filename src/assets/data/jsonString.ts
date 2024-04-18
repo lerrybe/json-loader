@@ -25,6 +25,22 @@ export const jsonString1 = `{
       "src": "https://image.dongascience.com/Photo/2020/03/5bddba7b6574b95d37b6079c199d7101.jpg"
     },
     {
+      "type": "text",
+      "left": 800,
+      "top": 200,
+      "fontSize": 60,
+      "text": "홍홍홍",
+      "fill": "#ff5722"
+    },
+    {
+      "type": "text",
+      "left": 600,
+      "top": 400,
+      "fontSize": 60,
+      "text": "Python",
+      "fill": "orange"
+    },
+    {
       "type": "image",
       "originX": "left",
       "originY": "top",
