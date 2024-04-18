@@ -165,6 +165,7 @@ function App() {
             padding: 14,
             marginTop: 10,
             borderRadius: 4,
+            overflow: "auto",
             backgroundColor: error ? "#ffebee" : "#e9e9e9",
           }}>
           {error && `[ERROR] ${errorMessage}`}
